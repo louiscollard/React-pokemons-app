@@ -3,6 +3,7 @@ import Pokemon from "../models/pokemon";
 import "./pokemon-card.css";
 import formatDate from "../helpers/format-date";
 import formatType from "../helpers/format-type";
+// import { useNavigate } from "react-router-dom";
 
 type Props = {
 	pokemon: Pokemon;
@@ -19,6 +20,11 @@ const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = "#009688
 	const hideBorder = () => {
 		setColor("#f5f5f5");
 	};
+
+	// const navigate = useNavigate();
+	// const goToPokemon = (id: number) => {
+	// 	navigate(`/pokemons/${id}`);
+	// };
 
 	return (
 		<div className="col s6 m4" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
