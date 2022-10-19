@@ -1,19 +1,15 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import PokemonForm from "../components/pokemon-form";
 import Pokemon from "../models/pokemon";
-import POKEMONS from "../models/mock-pokemon";
 import { useParams } from "react-router";
+import PokemonService from "../services/pokemon-service";
 
 const PokemonEdit: FunctionComponent = () => {
 	const { id } = useParams();
 	const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
 	useEffect(() => {
-		POKEMONS.forEach((pokemon) => {
-			if (id === pokemon.id.toString()) {
-				setPokemon(pokemon);
-			}
-		});
+		PokemonService.getPokemon(+id).then((pokemon) => setPokemon(pokemon));
 	}, [id]);
 
 	return (
